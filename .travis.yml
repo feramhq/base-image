@@ -15,8 +15,8 @@ install: true
 script:
   - >
     sudo docker build .
-      --tag ebekebe/ferambase:latest
-      --tag ebekebe/ferambase:$(git describe)
+    --tag ebekebe/ferambase:latest
+    --tag ebekebe/ferambase:$(git describe)
 
 # Push to docker hub
 after_success:
