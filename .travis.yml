@@ -1,0 +1,24 @@
+language: node_js
+node_js: '6.1'
+
+sudo: required
+services:
+  - docker
+
+branches:
+  only:
+    - master
+
+install: true
+
+# Build and tag
+script:
+  - >
+    sudo docker build .
+      --tag ebekebe/ferambase:latest
+      --tag ebekebe/ferambase:$(git describe)
+
+# Push to docker hub
+after_success:
+  - docker login -u ebekebe -p $DOCKERHUB_PASSWORD
+  - docker push ebekebe/ferambase
