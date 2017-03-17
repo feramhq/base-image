@@ -16,7 +16,7 @@ script:
   - >
     sudo docker build .
     --tag ebekebe/ferambase:latest
-    --tag ebekebe/ferambase:$(git describe)
+    --tag ebekebe/ferambase:$(git describe)_$(date --iso-8601)
 
 # Push to docker hub
 after_success:
