@@ -1,4 +1,4 @@
-FROM node:7.6
+FROM node:8.1
 
 RUN apt-get update
 
