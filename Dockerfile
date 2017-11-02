@@ -59,3 +59,13 @@ ENV PATH /root/.cabal/bin:/root/.local/bin:/opt/cabal/1.24/bin:/opt/ghc/8.0.2/bi
 
 # Install basic haskell dependencies for scripts
 RUN cabal update && cabal install protolude turtle
+
+# Configure SSH for git clone of private repos
+RUN \
+  mkdir ~/.ssh && \
+  touch ~/.ssh/id_rsa && \
+  chmod -R 600 ~/.ssh && \
+  echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+COPY configure-ssh.sh /usr/bin/configure-ssh
+# RUN chmod +x /usr/bin/configure-ssh
